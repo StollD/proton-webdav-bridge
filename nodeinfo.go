@@ -12,6 +12,7 @@ import (
 var _ os.FileInfo = &ProtonNodeInfo{}
 var _ webdav.ETager = &ProtonNodeInfo{}
 var _ webdav.ContentTyper = &ProtonNodeInfo{}
+var _ webdav.Hasher = &ProtonNodeInfo{}
 
 type ProtonNodeInfo struct {
 	name     string
@@ -75,4 +76,14 @@ func (self *ProtonNodeInfo) ContentType(_ context.Context) (string, error) {
 	}
 
 	return self.mimeType, nil
+}
+
+func (self *ProtonNodeInfo) Hashes(_ context.Context) (map[string]string, error) {
+	if self.hash == "" {
+		return nil, webdav.ErrNotImplemented
+	}
+	
+	return map[string]string{
+		"SHA1": self.hash,
+	}, nil
 }
