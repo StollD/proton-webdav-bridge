@@ -11,22 +11,25 @@ import (
 
 var _ os.FileInfo = &ProtonNodeInfo{}
 var _ webdav.ETager = &ProtonNodeInfo{}
+var _ webdav.ContentTyper = &ProtonNodeInfo{}
 
 type ProtonNodeInfo struct {
-	name    string
-	size    int64
-	isDir   bool
-	modTime time.Time
-	hash    string
+	name     string
+	size     int64
+	isDir    bool
+	modTime  time.Time
+	hash     string
+	mimeType string
 }
 
 func NewNodeInfo(link *drive.Link) *ProtonNodeInfo {
 	return &ProtonNodeInfo{
-		name:    link.Name(),
-		size:    link.Size(),
-		isDir:   link.IsDir(),
-		modTime: link.ModificationTime(),
-		hash:    link.ContentHash(),
+		name:     link.Name(),
+		size:     link.Size(),
+		isDir:    link.IsDir(),
+		modTime:  link.ModificationTime(),
+		hash:     link.ContentHash(),
+		mimeType: link.MIMEType(),
 	}
 }
 
@@ -64,4 +67,12 @@ func (self *ProtonNodeInfo) ETag(_ context.Context) (string, error) {
 	}
 
 	return self.hash, nil
+}
+
+func (self *ProtonNodeInfo) ContentType(_ context.Context) (string, error) {
+	if self.mimeType == "" {
+		return "", webdav.ErrNotImplemented
+	}
+
+	return self.mimeType, nil
 }

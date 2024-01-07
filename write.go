@@ -5,6 +5,8 @@ import (
 	"github.com/StollD/proton-drive"
 	"github.com/StollD/webdav"
 	"io/fs"
+	"mime"
+	"path"
 )
 
 var _ webdav.File = &ProtonWriteNode{}
@@ -76,12 +78,18 @@ func (self *ProtonWriteNode) Stat() (fs.FileInfo, error) {
 		return nil, err
 	}
 
+	mimeType := mime.TypeByExtension(path.Ext(self.name))
+	if mimeType == "" {
+		mimeType = "text/plain"
+	}
+
 	return &ProtonNodeInfo{
-		name:    self.name,
-		size:    self.writer.Size(),
-		isDir:   false,
-		modTime: self.writer.ModTime(),
-		hash:    self.writer.Hash(),
+		name:     self.name,
+		size:     self.writer.Size(),
+		isDir:    false,
+		modTime:  self.writer.ModTime(),
+		hash:     self.writer.Hash(),
+		mimeType: mimeType,
 	}, nil
 }
 
