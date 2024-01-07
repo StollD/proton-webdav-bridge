@@ -1,0 +1,9 @@
+[Unit]
+Description=WebDAV bridge for ProtonDrive
+
+[Service]
+ExecStart=%h/.local/bin/proton-webdav-bridge
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
