@@ -1,0 +1,24 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Ignore everything
+*
+
+# But not these files...
+!/.gitignore
+
+!*.go
+!go.sum
+!go.mod
+
+!README.md
+!LICENSE
+
+# !Makefile
+
+# ...even if they are in subdirectories
+!*/
+
