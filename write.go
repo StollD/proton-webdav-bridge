@@ -7,9 +7,11 @@ import (
 	"io/fs"
 	"mime"
 	"path"
+	"time"
 )
 
 var _ webdav.File = &ProtonWriteNode{}
+var _ webdav.ModTime = &ProtonWriteNode{}
 
 type ProtonWriteNode struct {
 	ctx     context.Context
@@ -100,4 +102,14 @@ func (self *ProtonWriteNode) Write(buffer []byte) (int, error) {
 	}
 
 	return self.writer.Write(buffer)
+}
+
+func (self *ProtonWriteNode) SetModTime(_ context.Context, modTime time.Time) error {
+	err := self.openWriter()
+	if err != nil {
+		return err
+	}
+
+	self.writer.SetModTime(modTime)
+	return nil
 }
