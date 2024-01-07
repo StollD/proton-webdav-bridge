@@ -7,10 +7,11 @@ import (
 	"flag"
 	"fmt"
 	"github.com/StollD/proton-drive"
+	"github.com/StollD/webdav"
 	"github.com/adrg/xdg"
 	"gitlab.com/david_mbuvi/go_asterisks"
+	"net/http"
 	"os"
-	"time"
 )
 
 const (
@@ -19,7 +20,8 @@ const (
 )
 
 var (
-	OptLogin = false
+	OptLogin  = false
+	OptListen = "127.0.0.1:7984"
 )
 
 func doLogin() error {
@@ -136,8 +138,10 @@ func doListen() error {
 
 	fmt.Println("Connected!")
 
-	time.Sleep(time.Hour)
-	return nil
+	return http.ListenAndServe(OptListen, &webdav.Handler{
+		FileSystem: &ProtonFS{session: session},
+		LockSystem: webdav.NewMemLS(),
+	})
 }
 
 func loadTokens() (drive.Tokens, error) {
@@ -179,6 +183,7 @@ func main() {
 	var err error = nil
 
 	flag.BoolVar(&OptLogin, "login", OptLogin, "Run Proton Drive login")
+	flag.StringVar(&OptListen, "listen", OptListen, "Which address the WebDAV server will listen to")
 	flag.Parse()
 
 	if OptLogin {
