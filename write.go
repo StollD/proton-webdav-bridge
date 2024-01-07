@@ -81,6 +81,7 @@ func (self *ProtonWriteNode) Stat() (fs.FileInfo, error) {
 		size:    self.writer.Size(),
 		isDir:   false,
 		modTime: self.writer.ModTime(),
+		hash:    self.writer.Hash(),
 	}, nil
 }
 
