@@ -51,7 +51,23 @@ func (self *ProtonFS) RemoveAll(ctx context.Context, name string) error {
 }
 
 func (self *ProtonFS) Rename(ctx context.Context, oldName, newName string) error {
-	return webdav.ErrNotImplemented
+	links := self.session.Links()
+	filesystem := self.session.FileSystem()
+
+	newName = path.Clean(newName)
+	dir, file := path.Split(newName)
+
+	link := links.LinkFromPath(oldName)
+	if link == nil {
+		return os.ErrNotExist
+	}
+
+	parent := links.LinkFromPath(dir)
+	if parent == nil {
+		return os.ErrNotExist
+	}
+
+	return filesystem.Move(ctx, link, parent, file)
 }
 
 func (self *ProtonFS) Stat(ctx context.Context, name string) (os.FileInfo, error) {
