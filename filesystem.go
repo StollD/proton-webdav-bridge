@@ -54,7 +54,7 @@ func (self *ProtonFS) OpenFile(ctx context.Context, name string, flag int, _ os.
 			return NewDirNode(link), nil
 		}
 
-		return nil, webdav.ErrNotImplemented
+		return NewReadNode(ctx, self.session, link), nil
 	}
 
 	return nil, webdav.ErrNotImplemented
