@@ -18,8 +18,8 @@ github.com/PuerkitoBio/goquery v1.8.1 h1:uQxhNlArOIdbrH1tr0UXwdVFgDcZDrZVdcpygAc
 github.com/PuerkitoBio/goquery v1.8.1/go.mod h1:Q8ICL1kNUJ2sXGoAhPGUdYDJvgQgHzJsnnd3H7Ho5jQ=
 github.com/StollD/go-proton-api v0.0.0-20240107183913-ce184ff46634 h1:UKC3UoC1CNC0DHZ9PI/5Qf45ctU+36po5lHSOE1ZMpQ=
 github.com/StollD/go-proton-api v0.0.0-20240107183913-ce184ff46634/go.mod h1:w63MZuzufKcIZ93pwRgiOtxMXYafI8H74D77AxytOBc=
-github.com/StollD/proton-drive v0.0.0-20240107193102-f89e248ed0d9 h1:9qGJtvPwslmjdw2GrFuSQ6sHKeBozOg9DzNoueckKw0=
-github.com/StollD/proton-drive v0.0.0-20240107193102-f89e248ed0d9/go.mod h1:Q+jUXXxobz0UpJUm/VdmNg49vTiaLGULVrdmWeMfwvk=
+github.com/StollD/proton-drive v0.0.0-20240107204203-16af9db51d7c h1:tUZuBFJuM8HpayK4yjAchL8Z8897l15wfV75/PwA/mc=
+github.com/StollD/proton-drive v0.0.0-20240107204203-16af9db51d7c/go.mod h1:Q+jUXXxobz0UpJUm/VdmNg49vTiaLGULVrdmWeMfwvk=
 github.com/StollD/webdav v0.0.0-20240107182809-953ca8148184 h1:uAS+epd0njtLURdvSoBExdfQQPeYZ0BBq0NLSnsajP0=
 github.com/StollD/webdav v0.0.0-20240107182809-953ca8148184/go.mod h1:IVmAvkX0bXbCTYcJ/yzCdcW6Ks2+NvC4aZgyehVxcHI=
 github.com/adrg/xdg v0.4.0 h1:RzRqFcjH4nE5C6oTAxhBtoE2IRyjBSa62SCbyPidvls=
