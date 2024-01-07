@@ -70,6 +70,13 @@ func (self *ProtonFS) Rename(ctx context.Context, oldName, newName string) error
 	return filesystem.Move(ctx, link, parent, file)
 }
 
-func (self *ProtonFS) Stat(ctx context.Context, name string) (os.FileInfo, error) {
-	return nil, webdav.ErrNotImplemented
+func (self *ProtonFS) Stat(_ context.Context, name string) (os.FileInfo, error) {
+	links := self.session.Links()
+
+	link := links.LinkFromPath(name)
+	if link == nil {
+		return nil, os.ErrNotExist
+	}
+
+	return NewNodeInfo(link), nil
 }
