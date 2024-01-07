@@ -57,7 +57,15 @@ func (self *ProtonFS) OpenFile(ctx context.Context, name string, flag int, _ os.
 		return NewReadNode(ctx, self.session, link), nil
 	}
 
-	return nil, webdav.ErrNotImplemented
+	name = path.Clean(name)
+	dir, file := path.Split(name)
+
+	parent := links.LinkFromPath(dir)
+	if parent == nil {
+		return nil, os.ErrNotExist
+	}
+
+	return NewWriteNode(ctx, self.session, parent, file), nil
 }
 
 func (self *ProtonFS) RemoveAll(ctx context.Context, name string) error {
