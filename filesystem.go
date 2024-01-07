@@ -39,7 +39,15 @@ func (self *ProtonFS) OpenFile(ctx context.Context, name string, flag int, perm 
 }
 
 func (self *ProtonFS) RemoveAll(ctx context.Context, name string) error {
-	return webdav.ErrNotImplemented
+	links := self.session.Links()
+	filesystem := self.session.FileSystem()
+
+	link := links.LinkFromPath(name)
+	if link == nil {
+		return os.ErrNotExist
+	}
+
+	return filesystem.Delete(ctx, link)
 }
 
 func (self *ProtonFS) Rename(ctx context.Context, oldName, newName string) error {
