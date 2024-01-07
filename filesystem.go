@@ -34,7 +34,29 @@ func (self *ProtonFS) Mkdir(ctx context.Context, name string, _ os.FileMode) err
 	return filesystem.CreateDir(ctx, parent, file)
 }
 
-func (self *ProtonFS) OpenFile(ctx context.Context, name string, flag int, perm os.FileMode) (webdav.File, error) {
+func (self *ProtonFS) OpenFile(ctx context.Context, name string, flag int, _ os.FileMode) (webdav.File, error) {
+	links := self.session.Links()
+
+	isRead := flag == os.O_RDONLY
+	isWrite := flag == (os.O_RDWR | os.O_CREATE | os.O_TRUNC)
+
+	if !isRead && !isWrite {
+		return nil, webdav.ErrNotImplemented
+	}
+
+	link := links.LinkFromPath(name)
+	if link == nil && isRead {
+		return nil, os.ErrNotExist
+	}
+
+	if isRead {
+		if link.IsDir() {
+			return NewDirNode(link), nil
+		}
+
+		return nil, webdav.ErrNotImplemented
+	}
+
 	return nil, webdav.ErrNotImplemented
 }
 
