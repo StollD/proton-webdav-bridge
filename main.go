@@ -104,6 +104,9 @@ func doListen() error {
 		return err
 	}
 
+	fmt.Println("Waiting for network ...")
+	WaitNetwork()
+
 	fmt.Println("Connecting to Proton Drive ...")
 
 	ctx, cancel := context.WithCancel(context.Background())
