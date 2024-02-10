@@ -6,12 +6,13 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/StollD/proton-drive"
+	"net/http"
+	"os"
+
+	drive "github.com/StollD/proton-drive"
 	"github.com/StollD/webdav"
 	"github.com/adrg/xdg"
 	"gitlab.com/david_mbuvi/go_asterisks"
-	"net/http"
-	"os"
 )
 
 const (

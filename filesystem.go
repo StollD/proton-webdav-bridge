@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"github.com/StollD/proton-drive"
-	"github.com/StollD/webdav"
 	"os"
 	"path"
+
+	drive "github.com/StollD/proton-drive"
+	"github.com/StollD/webdav"
 )
 
 var _ webdav.FileSystem = &ProtonFS{}

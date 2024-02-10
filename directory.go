@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/StollD/proton-drive"
-	"github.com/StollD/webdav"
 	"io/fs"
 	"os"
+
+	drive "github.com/StollD/proton-drive"
+	"github.com/StollD/webdav"
 )
 
 var _ webdav.File = &ProtonDirNode{}

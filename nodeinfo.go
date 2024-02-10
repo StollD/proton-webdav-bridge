@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
-	"github.com/StollD/proton-drive"
-	"github.com/StollD/webdav"
 	"io/fs"
 	"os"
 	"time"
+
+	drive "github.com/StollD/proton-drive"
+	"github.com/StollD/webdav"
 )
 
 var _ os.FileInfo = &ProtonNodeInfo{}
@@ -82,7 +83,7 @@ func (self *ProtonNodeInfo) Hashes(_ context.Context) (map[string]string, error)
 	if self.hash == "" {
 		return nil, webdav.ErrNotImplemented
 	}
-	
+
 	return map[string]string{
 		"SHA1": self.hash,
 	}, nil

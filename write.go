@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
-	"github.com/StollD/proton-drive"
-	"github.com/StollD/webdav"
 	"io/fs"
 	"mime"
 	"path"
 	"time"
+
+	drive "github.com/StollD/proton-drive"
+	"github.com/StollD/webdav"
 )
 
 var _ webdav.File = &ProtonWriteNode{}
