@@ -3,7 +3,7 @@ module github.com/StollD/proton-webdav-bridge
 go 1.18
 
 require (
-	github.com/StollD/proton-drive v0.0.0-20240210221526-1b912d27127e
+	github.com/StollD/proton-drive v0.0.0-20240212112223-f9d7e021c06f
 	github.com/StollD/webdav v0.0.0-20240210215556-f84066cfd273
 	github.com/adrg/xdg v0.4.0
 	gitlab.com/david_mbuvi/go_asterisks v0.0.0-20221114073100-4669d8bedcbe
