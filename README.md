@@ -10,6 +10,13 @@ using the WebDAV protocol. This approach has two benefits over the existing back
 * Because the bridge runs as a daemon, it can cache the entire directory tree and only update it when required, through
   the event system of Proton Drive. This enables near instant directory listings through WebDAV.
 
+## Disclaimer
+
+This software is experimental and mostly untested.
+
+While I do use it for myself, I cannot guarantee that it won't try to eat your data. Please proceed with caution and
+backups.
+
 ## Installation
 
 To build this software, you need a recent Go toolchain (1.18 or newer) and git.
