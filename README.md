@@ -14,18 +14,22 @@ approach has two benefits over the existing backend in rclone:
 
 ## Installation
 
-To build this software, you need a recent Go toolchain (1.18 or newer).
+To build this software, you need a recent Go toolchain (1.18 or newer) and git.
 
 ```bash
 $ go version
 go version go1.21.5 linux/amd64
+$ git --version
+git version 2.43.0
 ```
 
 Building and installing the bridge is mostly automatic. You can use the GOBIN
 environment variable to select the target directory.
 
 ```bash
-$ env GOBIN="$HOME/.local/bin" go install github.com/StollD/proton-webdav-bridge
+$ git clone https://github.com/StollD/proton-webdav-bridge
+$ cd proton-webdav-bridge
+$ env GOBIN="$HOME/.local/bin" go install .
 ```
 
 I recommend using `$HOME/.local/bin`, because it is fairly standard and most
