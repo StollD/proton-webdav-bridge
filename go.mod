@@ -3,7 +3,7 @@ module github.com/StollD/proton-webdav-bridge
 go 1.18
 
 require (
-	github.com/StollD/proton-drive v0.0.0-20240212112223-f9d7e021c06f
+	github.com/StollD/proton-drive v0.0.0-20240229113549-f8d259a1e668
 	github.com/StollD/webdav v0.0.0-20240210215556-f84066cfd273
 	github.com/adrg/xdg v0.4.0
 	gitlab.com/david_mbuvi/go_asterisks v0.0.0-20221114073100-4669d8bedcbe
@@ -11,12 +11,12 @@ require (
 
 require (
 	github.com/ProtonMail/bcrypt v0.0.0-20211005172633-e235017c1baf // indirect
-	github.com/ProtonMail/gluon v0.17.1-0.20240102132144-89b40fb6fe7e // indirect
+	github.com/ProtonMail/gluon v0.17.1-0.20240227105633-3734c7694bcd // indirect
 	github.com/ProtonMail/go-crypto v1.0.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/ProtonMail/go-srp v0.0.7 // indirect
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5 // indirect
-	github.com/PuerkitoBio/goquery v1.8.1 // indirect
+	github.com/PuerkitoBio/goquery v1.9.0 // indirect
 	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/barweiss/go-tuple v1.1.2 // indirect
 	github.com/bradenaw/juniper v0.15.3 // indirect
@@ -32,8 +32,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/relvacode/iso8601 v1.4.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	golang.org/x/crypto v0.19.0 // indirect
-	golang.org/x/exp v0.0.0-20240205201215-2c58cdc269a3 // indirect
+	golang.org/x/crypto v0.20.0 // indirect
+	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // indirect
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/sys v0.17.0 // indirect
